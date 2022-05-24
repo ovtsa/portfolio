@@ -1,0 +1,44 @@
+:host {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.homepage-container {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) 2fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    color: var(--custom-dark-blue);
+}
+
+.main-intro-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.homepage-intro-text-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10% 0%;
+}
+
+.profile-img-wrapper {
+    background: url("src/assets/images/profile.JPG") 50% 0% no-repeat;
+    background-size: 125%;
+    height: 75%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    border: 3px solid var(--custom-dark-blue);
+    margin: auto;
+}
+
+.intro-text-main {
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
+    margin: auto;
+}
+
+.skills-list {
+
+}

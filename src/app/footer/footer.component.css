@@ -1,0 +1,13 @@
+:host {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-color: var(--custom-light-blue);
+    color: var(--custom-light-gray);
+}
+
+.footer-container {
+    display: grid;
+    background-color: var(--custom-semi-light);
+    height: 100%;
+    width: 100%;
+}

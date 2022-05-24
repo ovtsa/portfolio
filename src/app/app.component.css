@@ -1,0 +1,17 @@
+.app-container {
+    display: grid;
+    grid-template-columns: 256px 6fr 6fr;
+    grid-template-rows: 64px 10fr 64px;
+    width: 100vw;
+    height: 100vh;
+    /*height: 100vh;*/
+    /*grid-template-columns: 220px 1fr 220px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header header header"
+        "nav content content"
+        "footer footer footer";
+    column-gap: 12px;
+    row-gap: 12px;
+    height: 100vh;*/
+}
