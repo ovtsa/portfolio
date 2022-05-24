@@ -3,6 +3,10 @@
     grid-column-end: 4;
 }
 
+a {
+    color: var(--custom-dark-gray);
+}
+
 .homepage-container {
     display: grid;
     grid-template-columns: minmax(480px, 2fr) 3fr;
@@ -21,7 +25,7 @@
 .homepage-intro-text-container {
     display: flex;
     flex-direction: column;
-    padding: 0px;
+    padding: 100px 0px;
 }
 
 .profile-img-wrapper {
@@ -44,6 +48,12 @@
 .skills-list-wrapper {
     padding: 0 10%;
     align-content: center;
+    margin-bottom: 3em;
+}
+
+.skills-list-descriptor {
+    font-size: 1.5em;
+    margin-bottom: 1.25em;
 }
 
 .skills-list {
@@ -67,4 +77,61 @@
 .resume-download-img {
     width: 50px;
     height: 50px;
+}
+
+.body-text-background {
+    background-color: var(--custom-light-blue);
+    padding: 2em;
+    border-radius: 30px 30px;
+}
+
+.body-text {
+    letter-spacing: 0.1em;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    color: var(--custom-dark-gray);
+}
+
+.university-and-resume-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
+}
+
+.university-logo {
+    margin: auto;
+    height: 100%;
+    text-align: center;
+    letter-spacing: 0.1em;
+    line-height: 1.1em;
+}
+
+.resume-download {
+    margin: auto;
+    height: 100%;
+}
+
+.resume-download-img {
+    width: 152px;
+    height: 172px;
+}
+
+.download-button {
+    background-color: var(--custom-light-blue);
+    border-radius: 10px;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
+    color: var(--custom-dark-gray);
+}
+
+.download-button:hover {
+    background-color: var(--custom-dark-blue);
+    color: var(--custom-light-gray);
+    cursor: pointer;
+}
+
+.quad4 {
+    display: flex;
+    flex-direction: column;
 }

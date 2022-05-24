@@ -12,4 +12,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onDownloadResumeButtonClicked() {
+    console.log('Download resume button clicked');
+  }
 }

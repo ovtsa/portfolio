@@ -8,7 +8,7 @@
     </div>
     <div class="skills-list-wrapper grid-item">
         <div class="skills-list">
-            <p>Some of my skills:</p>
+            <p class="skills-list-descriptor">Some of my skills -</p>
             <ul>
                 <li><img class="li-icon" src="/assets/images/icon-angular.png"><p>Angular</p></li>
                 <li><img class="li-icon" src="/assets/images/icon-typescript.png"><p>TypeScript/Javascript</p></li>
@@ -27,12 +27,33 @@
             </ul>
         </div>
     </div>
-    <p class="grid-item">I graduated from Appalachian State University with a B.S. in Computer Science
-        in December 2020. Since then, I have been working in full-stack web development,
-        in particular contributing to the development and maintenance of an internal web
-        application for managing timesheets at my current company, SCI Fusion360 (now owned
-        by Persistent Systems).<br><br></p>
-        <!-- I am interested in relocating to Denver this year, and I am seeking work
-        in the area! If interested, my resume is available to the left.
-    </p>-->
+    <div class="grid-item quad4">
+        <div class="body-text-background">
+            <p class="body-text">For as long as I can remember, my passion has lain at the intersection of problem-solving and design. 
+                Ever since I first started programming Lego NXT bots as a child, I have enjoyed exploring the ever-evolving field of 
+                software development, primarily focusing on web application technologies.
+                <br><br>
+                Since graduating college in 2020, I have been working in the development and maintenance of internal full-stack applications
+                at my current company, SCI Fusion360 (recently acquired by Persistent Systems). I have gained tangible work experience on both
+                the front and the back end of the software development life cycle, and the skills I have learned from my work fuel my other projects, 
+                visible in the navigation bar to the left.
+                <br><br>
+                This website serves as a homepage for my personal projects and my blog. If this interests you, feel free to follow my GitHub 
+                <a href="#">here</a>, or my blog <a href="#">here</a>.
+                <br><br>
+                I am interested in relocating to the greater ??? area this year. If you have work available in the region, or are interested in 
+                getting help with another project, I would love to get in touch!
+            </p>
+        </div>
+        <div class="university-and-resume-wrapper">
+            <div class="university-logo">
+                <img class="university-logo-img" src="/assets/images/icon-asu.svg">
+                <p>B.S. in Computer Science<br>Appalachian State University<br>December 2020</p>
+            </div>
+            <div class="resume-download">
+                <img class="resume-download-img" src="/assets/images/icon-resume-download.png">
+                <div class="download-button" (click)="onDownloadResumeButtonClicked()"><p>My Resume</p></div>
+            </div>
+        </div>
+    </div>
 </div>
