@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
 
   onDownloadResumeButtonClicked() {
-    console.log('Download resume button clicked');
+    const link = this.renderer.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'http://localhost:4200/assets/misc/dummy_resume.docx');
+    link.setAttribute('download', `dummy_resume.docx`);
+    link.click();
+    link.remove();
   }
 }
