@@ -1,6 +1,9 @@
 :host {
     grid-column-start: 1;
     grid-column-end: 4;
+    border-bottom: 4px solid var(--custom-dark-blue);
+    position: sticky;
+    top: 0px;
 }
 
 .header-container {
