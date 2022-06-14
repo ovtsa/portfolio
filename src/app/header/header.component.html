@@ -1,8 +1,8 @@
 <div class="header-container">
     <div><p>Nathan Jobe</p></div>
     <div>
-        <app-header-button buttonText="About"></app-header-button>
-        <app-header-button buttonText="Contact Me"></app-header-button>
-        <app-header-button buttonText="Support"></app-header-button>
+        <app-header-button buttonText="About" (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header-button>
+        <app-header-button buttonText="Contact Me" (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header-button>
+        <app-header-button buttonText="Support" (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header-button>
     </div>
 </div>

@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'portfolio';
+  pageSelected: string = 'homepage';
+  title: string = 'portfolio';
+
+  setPageSelected(page: string) {
+    this.pageSelected = page;
+  }
+
+  onHeaderButtonClicked(headerButtonName: string) {
+    this.setPageSelected(headerButtonName);
+  }
 }
