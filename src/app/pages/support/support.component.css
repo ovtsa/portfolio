@@ -5,6 +5,11 @@
 
 .support-page-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+img {
+    width: 50%;
+    height: 100%;
 }
