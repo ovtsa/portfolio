@@ -13,9 +13,10 @@ export class HomepageComponent implements OnInit {
   }
 
   onDownloadResumeButtonClicked() {
+    const path = '/assets/misc/dummy_resume.docx';
     const link = this.renderer.createElement('a');
     link.setAttribute('target', '_blank');
-    link.setAttribute('href', 'http://localhost:4200/assets/misc/dummy_resume.docx');
+    link.setAttribute('href', window.location.protocol + '//' + window.location.host + path);
     link.setAttribute('download', `dummy_resume.docx`);
     link.click();
     link.remove();
