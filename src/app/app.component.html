@@ -2,10 +2,12 @@
   <app-header (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header>
   <app-projects-navbar></app-projects-navbar>
 
-  <app-homepage *ngSwitchCase="'About'"></app-homepage>
-  <app-contact-me *ngSwitchCase="'Contact Me'"></app-contact-me>
-  <app-support *ngSwitchCase="'Support'"></app-support>
-  <app-homepage *ngSwitchDefault></app-homepage>
-  
+  <div class="page-container">
+    <app-homepage *ngSwitchCase="'About'"></app-homepage>
+    <app-contact-me *ngSwitchCase="'Contact Me'"></app-contact-me>
+    <app-support *ngSwitchCase="'Support'"></app-support>
+    <app-homepage *ngSwitchDefault></app-homepage>
+  </div>
+
   <app-footer></app-footer>
 </div>
