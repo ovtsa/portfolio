@@ -1,0 +1,20 @@
+.email-widget-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 56px 256px;
+}
+
+.email-widget-header {
+    color: var(--custom-dark-blue);
+    letter-spacing: 0.1em;
+    font-size: 2em;
+    margin: auto;
+}
+
+.email-widget-form-line {
+    margin: 25px;
+}
+
+form {
+
+}

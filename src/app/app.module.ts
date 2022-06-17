@@ -9,6 +9,8 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { HeaderButtonComponent } from './header/header-button/header-button.component';
 import { ContactMeComponent } from './pages/contact-me/contact-me.component';
 import { SupportComponent } from './pages/support/support.component';
+import { ContactFormComponent } from './shared/components/contact-form/contact-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { SupportComponent } from './pages/support/support.component';
     HomepageComponent,
     HeaderButtonComponent,
     ContactMeComponent,
-    SupportComponent
+    SupportComponent,
+    ContactFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
