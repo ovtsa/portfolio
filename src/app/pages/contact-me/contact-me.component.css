@@ -4,6 +4,11 @@
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+hr {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
 .contact-page-header {
     grid-column-start: 1;
     grid-column-end: 4;
@@ -37,7 +42,33 @@
     text-align: center;
 }
 
+.download-button {
+    background-color: var(--custom-light-blue);
+    border-radius: 10px;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
+    color: var(--custom-dark-gray);
+}
+
+.download-button:hover {
+    background-color: var(--custom-dark-blue);
+    color: var(--custom-light-gray);
+    cursor: pointer;
+}
+
 .contact-page-socials-container img {
     width: 192px;
     height: 192px;
+}
+
+.resume-download {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    margin: auto;
+}
+
+.resume-download img {
+    width: 152px;
+    height: 172px;
 }
