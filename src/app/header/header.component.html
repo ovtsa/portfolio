@@ -1,8 +1,8 @@
 <div class="header-container">
     <div><p>Nathan Jobe</p></div>
     <div>
-        <app-header-button buttonText="About" (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header-button>
-        <app-header-button buttonText="Contact Me" (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header-button>
-        <app-header-button buttonText="Support" (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header-button>
+        <app-header-button buttonText="About" [routerLink]="['/']" routerLinkActive="selected"></app-header-button>
+        <app-header-button buttonText="Contact Me" [routerLink]="['/contact-me']" routerLinkActive="selected"></app-header-button>
+        <app-header-button buttonText="Support" [routerLink]="['/support']" routerLinkActive="selected"></app-header-button>
     </div>
 </div>

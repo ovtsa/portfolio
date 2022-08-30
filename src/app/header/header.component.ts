@@ -6,14 +6,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() headerButtonClicked = new EventEmitter<string>();
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onHeaderButtonClicked(buttonName: string) {
-    this.headerButtonClicked.emit(buttonName);
   }
 }

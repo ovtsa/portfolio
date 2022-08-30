@@ -11,6 +11,13 @@ import { ContactMeComponent } from './pages/contact-me/contact-me.component';
 import { SupportComponent } from './pages/support/support.component';
 import { ContactFormComponent } from './shared/components/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: HomepageComponent },
+  { path: 'contact-me', component: ContactMeComponent },
+  { path: 'support', component: SupportComponent }
+];
 
 @NgModule({
   declarations: [
@@ -26,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

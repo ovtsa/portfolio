@@ -1,12 +1,9 @@
-<div class="app-container" [ngSwitch]="pageSelected">
-  <app-header (headerButtonClicked)="onHeaderButtonClicked($event)"></app-header>
+<div class="app-container">
+  <app-header></app-header>
   <app-projects-navbar></app-projects-navbar>
 
   <div class="page-container">
-    <app-homepage *ngSwitchCase="'About'"></app-homepage>
-    <app-contact-me *ngSwitchCase="'Contact Me'"></app-contact-me>
-    <app-support *ngSwitchCase="'Support'"></app-support>
-    <app-homepage *ngSwitchDefault></app-homepage>
+    <router-outlet></router-outlet>
   </div>
 
   <app-footer></app-footer>

@@ -22,3 +22,12 @@ div:hover {
     border-right: 4px solid var(--custom-dark-blue);
     border-top: 4px solid var(--custom-dark-blue);
 }
+
+.selected {
+    background-color: var(--custom-light-gray);
+    color: var(--custom-dark-blue);
+    cursor: pointer;
+    border-left: 4px solid var(--custom-dark-blue);
+    border-right: 4px solid var(--custom-dark-blue);
+    border-top: 4px solid var(--custom-dark-blue);
+}
