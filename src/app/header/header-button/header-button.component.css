@@ -10,10 +10,12 @@ div {
     width: 100%;
     height: 100%;
     background-color: var(--custom-dark-blue);
-    /*border-left: 4px solid var(--custom-light-blue);*/
-    /*border-right: 4px solid var(--custom-light-blue);*/
+    border-left: 4px solid var(--custom-dark-blue);
+    border-right: 4px solid var(--custom-dark-blue);
+    border-top: 4px solid var(--custom-dark-blue);
 }
 
+/*
 div:hover {
     background-color: var(--custom-light-gray);
     color: var(--custom-dark-blue);
@@ -22,11 +24,59 @@ div:hover {
     border-right: 4px solid var(--custom-dark-blue);
     border-top: 4px solid var(--custom-dark-blue);
 }
+*/
+
+@keyframes mouseEnterAnimation {
+    from {
+        background-color: var(--custom-dark-blue);
+        color: var(--custom-light-gray);
+        border-left: 4px solid var(--custom-dark-blue);
+        border-right: 4px solid var(--custom-dark-blue);
+        border-top: 4px solid var(--custom-dark-blue);
+    }
+    to {
+        background-color: var(--custom-light-gray);
+        color: var(--custom-dark-blue);
+        cursor: pointer;
+        border-left: 4px solid var(--custom-dark-blue);
+        border-right: 4px solid var(--custom-dark-blue);
+        border-top: 4px solid var(--custom-dark-blue);
+    }
+}
+
+@keyframes mouseLeaveAnimation {
+    from {
+        background-color: var(--custom-light-gray);
+        color: var(--custom-dark-blue);
+        cursor: pointer;
+        border-left: 4px solid var(--custom-dark-blue);
+        border-right: 4px solid var(--custom-dark-blue);
+        border-top: 4px solid var(--custom-dark-blue);
+    } to {
+        background-color: var(--custom-dark-blue);
+        color: var(--custom-light-gray);
+        border-left: 4px solid var(--custom-dark-blue);
+        border-right: 4px solid var(--custom-dark-blue);
+        border-top: 4px solid var(--custom-dark-blue);
+    }
+}
+
+.not-selected:hover {
+    animation-name: mouseEnterAnimation;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+}
+
+.not-selected:not(:hover) {
+    animation-name: mouseLeaveAnimation;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+}
 
 .selected {
     background-color: var(--custom-light-gray);
     color: var(--custom-dark-blue);
-    cursor: pointer;
+    cursor: default;
     border-left: 4px solid var(--custom-dark-blue);
     border-right: 4px solid var(--custom-dark-blue);
     border-top: 4px solid var(--custom-dark-blue);
