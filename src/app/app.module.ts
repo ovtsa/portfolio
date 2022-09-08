@@ -13,11 +13,15 @@ import { SupportComponent } from './pages/support/support.component';
 import { ContactFormComponent } from './shared/components/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', redirectTo: '/about', pathMatch: 'full' },
+  { path: 'about', component: HomepageComponent},
   { path: 'contact-me', component: ContactMeComponent },
-  { path: 'support', component: SupportComponent }
+  { path: 'support', component: SupportComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({
