@@ -11,8 +11,9 @@ import { ContactMeComponent } from './pages/contact-me/contact-me.component';
 import { SupportComponent } from './pages/support/support.component';
 import { ContactFormComponent } from './shared/components/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
