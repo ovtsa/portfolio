@@ -4,9 +4,25 @@
 }
 
 .navbar-container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     background-color: var(--custom-dark-blue);
     color: var(--custom-light-gray);
+}
+
+.navbar-items {
+    height: min-content;
+    top: 64px;
+    position: sticky;
+}
+
+img {
+    background-color: var(--custom-light-gray);
+    border-radius: 50%;
+    border: 4px solid var(--custom-light-gray);
+    display: block;
+    width: 50%;
+    margin: 20px auto;
 }

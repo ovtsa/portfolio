@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { NavbarButtonComponent } from './projects-navbar/navbar-button/navbar-button.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthGuard } from './auth-guard.service';
     HeaderButtonComponent,
     ContactMeComponent,
     SupportComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    NavbarButtonComponent
   ],
   imports: [
     BrowserModule,
