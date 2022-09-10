@@ -9,6 +9,11 @@ html {
     background-color: var(--custom-dark-gray);
     overflow: -moz-scrollbars-vertical;
     overflow-y: scroll;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
 }
 
 * {

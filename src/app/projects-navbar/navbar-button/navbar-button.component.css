@@ -1,0 +1,27 @@
+div {
+    display: flex;
+    height: 75px;
+    padding-left: 15px;
+    font-size: large;
+    letter-spacing: 0.05em;
+    /*border: 2px solid var(--custom-light-blue);*/
+    align-items: center;
+}
+
+img {
+    height: 20%;
+    margin-top: -4px;
+    margin-right: 10px;
+}
+
+.not-selected img {
+    opacity: 50%;
+}
+
+.not-selected:hover img {
+    opacity: 100%;
+}
+
+.selected {
+
+}

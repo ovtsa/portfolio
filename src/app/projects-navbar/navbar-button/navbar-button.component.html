@@ -1,1 +1,5 @@
-<p>navbar-button works!</p>
+<div class="not-selected" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}"
+    #link="routerLinkActive" [class.not-selected]="!link.isActive">
+    <img src="/assets/images/icon-arrow.svg">
+    <p>{{ buttonText }}</p>
+</div>

@@ -15,6 +15,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { NavbarButtonComponent } from './projects-navbar/navbar-button/navbar-button.component';
+import { BlogHomepageComponent } from './project-pages/blog-homepage/blog-homepage.component';
+import { ProjectsLandingPageComponent } from './project-pages/projects-landing-page/projects-landing-page.component';
+import { MinesweeperPageComponent } from './project-pages/minesweeper-page/minesweeper-page.component';
+import { DivvyMapperPageComponent } from './project-pages/divvy-mapper-page/divvy-mapper-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { NavbarButtonComponent } from './projects-navbar/navbar-button/navbar-bu
     ContactMeComponent,
     SupportComponent,
     ContactFormComponent,
-    NavbarButtonComponent
+    NavbarButtonComponent,
+    BlogHomepageComponent,
+    ProjectsLandingPageComponent,
+    MinesweeperPageComponent,
+    DivvyMapperPageComponent
   ],
   imports: [
     BrowserModule,

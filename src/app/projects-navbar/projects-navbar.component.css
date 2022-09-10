@@ -16,6 +16,19 @@
     height: min-content;
     top: 64px;
     position: sticky;
+    margin-bottom: 80%;
+}
+
+.navbar-flicker-stopper {
+    height: 40vh;
+    width: 100%;
+    background-color: var(--custom-dark-blue);
+    top: 70vh;
+    position: sticky;
+}
+
+.button-container {
+    margin-top: 60px;
 }
 
 img {

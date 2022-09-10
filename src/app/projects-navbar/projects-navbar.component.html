@@ -1,10 +1,11 @@
 <div class="navbar-container">
     <div class="navbar-items">
         <img src="/assets/images/links.svg">
-        <ul>
-            <li><app-navbar-button></app-navbar-button></li>
-            <li><app-navbar-button></app-navbar-button></li>
-            <li><app-navbar-button></app-navbar-button></li>
-        </ul>
+        <div class="button-container">
+            <app-navbar-button buttonText="Blog" [routerLink]="['/projects', 'blog']" routerLinkActive="selected"></app-navbar-button>
+            <app-navbar-button buttonText="Minesweeper" [routerLink]="['/projects', 'minesweeper']" routerLinkActive="selected"></app-navbar-button>
+            <app-navbar-button buttonText="Divvy Bikeshare Mapper" [routerLink]="['/projects', 'divvy-bike']" routerLinkActive="selected"></app-navbar-button>
+        </div>
     </div>
+    <div class="navbar-flicker-stopper"></div>
 </div>
