@@ -24,6 +24,15 @@ a {
 }
 
 .profile-img-wrapper {
+    background: url("src/assets/images/profile2.jpg") 50% 0% no-repeat;
+    background-size: 100%;
+    background-position: 10%;
+    height: 384px;
+    width: 384px;
+    border-radius: 100%;
+    border: 3px solid var(--custom-dark-blue);
+    margin: auto;
+    /*
     background: url("src/assets/images/smiley.png") 50% 0% no-repeat;
     background-size: 100%;
     height: 384px;
@@ -31,6 +40,7 @@ a {
     border-radius: 100%;
     border: 3px solid var(--custom-dark-blue);
     margin: auto;
+    */
     /*
     background: url("src/assets/images/profile.JPG") 50% 0% no-repeat;
     background-size: 125%;
