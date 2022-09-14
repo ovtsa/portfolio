@@ -1,10 +1,8 @@
 <div class="app-container">
   <app-header></app-header>
   <app-projects-navbar></app-projects-navbar>
-
-  <div class="page-container">
-    <router-outlet></router-outlet>
+  <div class="page-container" [@routeFade]="outlet.isActivated ? outlet.activatedRoute : ''">
+      <router-outlet #outlet="outlet"></router-outlet>
   </div>
-
   <app-footer></app-footer>
 </div>

@@ -19,6 +19,7 @@ import { BlogHomepageComponent } from './project-pages/blog-homepage/blog-homepa
 import { ProjectsLandingPageComponent } from './project-pages/projects-landing-page/projects-landing-page.component';
 import { MinesweeperPageComponent } from './project-pages/minesweeper-page/minesweeper-page.component';
 import { DivvyMapperPageComponent } from './project-pages/divvy-mapper-page/divvy-mapper-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DivvyMapperPageComponent } from './project-pages/divvy-mapper-page/divv
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
