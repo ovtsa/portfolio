@@ -1,0 +1,16 @@
+.blog-page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width: 50%;
+    height: 65vh;
+    align-items: center;
+    margin: 30px auto 30px auto;
+}
+
+p {
+    margin: auto;
+    font-size: 3em;
+}

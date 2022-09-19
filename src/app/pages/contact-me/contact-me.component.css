@@ -72,3 +72,13 @@ hr {
     width: 152px;
     height: 172px;
 }
+
+.unsetall {
+    all: unset;
+    cursor: pointer;
+}
+
+.wip {
+    height: 200px;
+    margin: 0px auto 50px auto;
+}
