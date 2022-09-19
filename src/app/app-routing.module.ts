@@ -7,7 +7,6 @@ import { SupportComponent } from "./pages/support/support.component";
 import { BlogHomepageComponent } from "./project-pages/blog-homepage/blog-homepage.component";
 import { DivvyMapperPageComponent } from "./project-pages/divvy-mapper-page/divvy-mapper-page.component";
 import { MinesweeperPageComponent } from "./project-pages/minesweeper-page/minesweeper-page.component";
-import { ProjectsLandingPageComponent } from "./project-pages/projects-landing-page/projects-landing-page.component";
 
 const appRoutes: Routes = [
     { path: 'about', component: HomepageComponent},

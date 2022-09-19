@@ -6,14 +6,17 @@ div {
     letter-spacing: 0.05em;
     /*border: 2px solid var(--custom-light-blue);*/
     align-items: center;
+    cursor: pointer;
 }
 
 img {
     height: 20%;
     margin-top: -4px;
     margin-right: 10px;
+    opacity: 0;
 }
 
+/*
 .not-selected img {
     opacity: 50%;
 }
@@ -21,7 +24,8 @@ img {
 .not-selected:hover img {
     opacity: 100%;
 }
+*/
 
 .selected {
-
+    cursor: default;
 }
