@@ -20,6 +20,7 @@ import { ProjectsLandingPageComponent } from './project-pages/projects-landing-p
 import { MinesweeperPageComponent } from './project-pages/minesweeper-page/minesweeper-page.component';
 import { DivvyMapperPageComponent } from './project-pages/divvy-mapper-page/divvy-mapper-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
