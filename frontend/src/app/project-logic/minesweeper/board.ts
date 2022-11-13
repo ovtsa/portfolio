@@ -1,6 +1,6 @@
 import { CellState, Cell } from './cell';
 
-// first num in internal array is x-offset, second is y-offset (from current cell)
+// first num in internal array is y-offset, second is x-offset (from current cell)
 const surroundingCells = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
 enum DefaultBoardSpecs {

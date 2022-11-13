@@ -1,8 +1,13 @@
 <div class="app-container">
   <app-header></app-header>
   <app-projects-navbar></app-projects-navbar>
+  <!-- This has a fading animation that leads to a placement glitch. TBI
   <div class="page-container" [@routeFade]="outlet.isActivated ? outlet.activatedRoute : ''">
-      <router-outlet #outlet="outlet"></router-outlet>
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+  -->
+  <div class="page-container">
+    <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>
 </div>
