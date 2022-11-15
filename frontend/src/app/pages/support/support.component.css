@@ -1,11 +1,13 @@
 .support-page-container {
     display: flex;
     flex-direction: column;
+    height: 80vh;
+    margin-top: 40px;
 }
 
 img {
     width: 50%;
-    height: 65vh;
+    height: 50%;
     align-items: center;
     margin: 30px auto 30px auto;
 }
@@ -13,4 +15,5 @@ img {
 p {
     margin: auto;
     font-size: 3em;
+    color: var(--custom-dark-blue);
 }
