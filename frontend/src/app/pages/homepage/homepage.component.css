@@ -109,7 +109,7 @@ a {
 .university-and-resume-wrapper {
     display: flex;
     flex-direction: row;
-    margin: auto 0;
+    margin: 40px 0;
 }
 
 .university-logo {
