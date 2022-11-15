@@ -1,0 +1,54 @@
+:host {
+    --minesweeper-board-dark-gray: #646464;
+    --minesweeper-board-mid-gray: #9c9c9c;
+    --mineesweeper-board-light-gray: #e4e4e4;
+}
+
+.minesweeper-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 120px;
+}
+
+.minesweeper-game-ui-container {
+    border: 4px solid var(--minesweeper-board-dark-gray);
+    border-radius: 8px;
+}
+
+.minesweeper-game-top-buttons-ribbon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--minesweeper-board-mid-gray);
+    padding: 8px;
+    border-bottom: 4px solid var(--minesweeper-board-dark-gray);
+}
+
+.minesweeper-counter {
+    width: 32px;
+    height: 16px;
+    background-color: darkred;
+}
+
+.minesweeper-game-button {
+    width: 16px;
+    height: 16px;
+    background-color: yellow;
+}
+
+.minesweeper-game-cell-grid {
+    /*background-color: var(--custom-light-blue);*/
+    border-collapse: collapse;
+    
+}
+
+.minesweeper-game-cell {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+}

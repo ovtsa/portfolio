@@ -3,7 +3,7 @@ import { CellState, Cell } from './cell';
 // first num in internal array is y-offset, second is x-offset (from current cell)
 const surroundingCells = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 
-enum DefaultBoardSpecs {
+export enum DefaultBoardSpecs {
     BeginnerWidth=8,
     BeginnerHeight=8,
     BeginnerNumMines=10,
@@ -39,6 +39,23 @@ export class Board {
         this.countAdjacentMines();
     }
 
+    // This function ensures the first cell clicked isn't a mine. If it is, it moves that mine somewhere else,
+    // and then recounts the adjacent mines in each cell.
+    public moveMineFromCell(x: number, y: number): boolean {
+        if (!this.grid[y][x].mine) return false;
+
+        // this finds a random other cell that is not a mine 
+        let newCell: Cell = this.getRandomCell();
+        while (newCell.mine) {
+            newCell = this.getRandomCell();
+        }
+
+        this.grid[y][x].mine = false;
+        newCell.mine = true;
+        this.countAdjacentMines();
+        return true;
+    }
+
     // This function takes forever if the board is almost full of mines, but since we will only allow a few configurations,
     // none so full, this should not be a problem.
     private assignMines(): void {
@@ -58,9 +75,9 @@ export class Board {
                 let adjacentMines = 0;
                 for (const neighbor of surroundingCells) {
                     if (
-                        this.grid[y + neighbor[0]] &&
-                        this.grid[y + neighbor[0]][x + neighbor[1]] &&
-                        this.grid[y + neighbor[0]][x + neighbor[1]].mine
+                        this.grid[y + neighbor[1]] &&
+                        this.grid[y + neighbor[1]][x + neighbor[0]] &&
+                        this.grid[y + neighbor[1]][x + neighbor[0]].mine
                     ) {
                         adjacentMines++;
                     }

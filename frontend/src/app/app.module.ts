@@ -21,6 +21,7 @@ import { MinesweeperPageComponent } from './project-pages/minesweeper-page/mines
 import { DivvyMapperPageComponent } from './project-pages/divvy-mapper-page/divvy-mapper-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MinesweeperBoardComponent } from './project-pages/minesweeper-page/minesweeper-board/minesweeper-board.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     BlogHomepageComponent,
     ProjectsLandingPageComponent,
     MinesweeperPageComponent,
-    DivvyMapperPageComponent
+    DivvyMapperPageComponent,
+    MinesweeperBoardComponent
   ],
   imports: [
     BrowserModule,
