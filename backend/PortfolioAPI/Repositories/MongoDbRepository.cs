@@ -1,18 +1,39 @@
 using PortfolioAPI.Entities;
+using PortfolioAPI.DbTools;
 using MongoDB.Driver;
+using PortfolioAPI.Dtos;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
+// TODO: Separate different controllers' functions and collections into separate classes.
+// this should not be a monolith class for all mongodb functions
 namespace PortfolioAPI.Repositories {
-    public class MongoDbMinesweeperRepository : IRepository {
+    public class MongoDbRepository : IRepository {
         private const string databaseName = "Portfolio_API_DB";
-        private const string collectionName = "gameDataCollection";
+        private const string gameDataCollectionName = "gameDataCollection";
+        private const string resumeCollectionName = "resumeCollection";
         private readonly IMongoCollection<GameData> gameDataCollection;
+        private readonly IMongoCollection<Resume> resumeCollection;
         private readonly FilterDefinitionBuilder<GameData> filterBuilder = Builders<GameData>.Filter;
         private readonly SortDefinitionBuilder<GameData> sortBuilder = Builders<GameData>.Sort;
 
-        public MongoDbMinesweeperRepository(IMongoClient mongoClient) {
+        public MongoDbRepository(IMongoClient mongoClient) {
             IMongoDatabase database = mongoClient.GetDatabase(databaseName);
-            gameDataCollection = database.GetCollection<GameData>(collectionName);
+            gameDataCollection = database.GetCollection<GameData>(gameDataCollectionName);
+            resumeCollection = database.GetCollection<Resume>(resumeCollectionName);
+
+            // This only should be run in test environment, not prod
+            InsertTestData(database);
+        }
+
+        private void InsertTestData(IMongoDatabase database) {
+            InitDb initDb = new InitDb(database);
+            initDb.InsertTestData();
+        }
+
+        public async Task<Resume> GetResumeAsync() {
+            var filter = Builders<Resume>.Filter.Eq(resume => resume.name, "Nathan Jobe");
+            return await resumeCollection.Find(filter).SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<GameData>> GetMinesweeperGameLeaderboardAsync(GameDifficulty gd, int limit) {

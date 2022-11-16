@@ -20,7 +20,7 @@ var mongoDbSettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).
 builder.Services.AddSingleton<IMongoClient>(ServiceProvider => {
     return new MongoClient(mongoDbSettings.ConnectionString);
 });
-builder.Services.AddSingleton<IRepository, MongoDbMinesweeperRepository>();
+builder.Services.AddSingleton<IRepository, MongoDbRepository>();
 builder.Services.AddControllers(options => {
     options.SuppressAsyncSuffixInActionNames = false;
 });

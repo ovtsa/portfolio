@@ -12,5 +12,14 @@ namespace PortfolioAPI {
                 datePlayed = gd.datePlayed
             };
         }
+
+        public static ResumeDto AsDto(this Resume r) {
+            return new ResumeDto {
+                id = r.id,
+                name = r.name,
+                extension = r.extension,
+                binaryData = r.binaryData
+            };
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.ObjectPool;
 using PortfolioAPI.Dtos;
 using PortfolioAPI.Entities;
 using PortfolioAPI.Repositories;
@@ -29,7 +30,7 @@ namespace PortfolioAPI.Controllers {
         // GET /minesweeper/games/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<GameDto>> GetMinesweeperGameAsync(Guid id) {
-            var game = await repository.GetMinesweeperGameAsync(id);
+            GameData? game = await repository.GetMinesweeperGameAsync(id);
             if (game is null) { return NotFound(); }
             return Ok(game.AsDto());
         }

@@ -8,6 +8,10 @@ namespace PortfolioAPI.Repositories {
             new GameData { id = Guid.NewGuid(), username = "Sue",   difficulty = GameDifficulty.HARD,   timeTaken = TimeSpan.FromSeconds(45), datePlayed = DateTimeOffset.Now},
         };
 
+        public async Task<Resume> GetResumeAsync() {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<GameData>> GetMinesweeperGameLeaderboardAsync(GameDifficulty gd, int limit) {
             throw new NotImplementedException();
         }
