@@ -25,18 +25,13 @@
     background-color: var(--minesweeper-board-mid-gray);
     padding: 8px;
     border-bottom: 4px solid var(--minesweeper-board-dark-gray);
+    /*height: 84px;*/
 }
 
 .minesweeper-counter {
     width: 32px;
     height: 16px;
     background-color: darkred;
-}
-
-.minesweeper-game-button {
-    width: 16px;
-    height: 16px;
-    background-color: yellow;
 }
 
 .minesweeper-game-cell-grid {

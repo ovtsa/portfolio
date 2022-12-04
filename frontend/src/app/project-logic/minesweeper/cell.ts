@@ -33,7 +33,7 @@ export class Cell {
 
     constructor(public row: number, public col: number) {}
 
-    getCellImage(gameOver: boolean): string {
+    getCellImage(gameOver: boolean, gameWon: boolean): string {
 
         // If a cell is cleared, there's a mine underneath, and this was the click that ended the game,
         // the mine death icon should be used.
@@ -57,9 +57,14 @@ export class Cell {
             return CellImage.FLAGGED_WRONG;
         }
 
-        // If the game is over and a cell has a mine, it should be shown
-        if (gameOver && this.mine) {
+        // If the game is over and lost, and a cell has a mine, it should be shown
+        if (gameOver && !gameWon && this.mine) {
             return CellImage.MINE;
+        }
+
+        // If the game is over and won, and a cell has a mine, it should be flagged
+        if (gameOver && gameWon && this.mine) {
+            return CellImage.FLAGGED;
         }
 
         // If a square has been cleared, its image should depend on the number of adjacent mines.

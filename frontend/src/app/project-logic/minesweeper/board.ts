@@ -56,6 +56,20 @@ export class Board {
         return true;
     }
 
+    // Checks to see if the game is won by looking to confirm there are no unknown squares 
+    public isGameWon(): boolean {
+        let gameWon = true;
+        for (let y = 0; y < this.grid.length; y++) {
+            for (let x = 0; x < this.grid[y].length; x++) {
+                if (this.grid[y][x].cellState === CellState.UNKNOWN &&
+                    !this.grid[y][x].mine) {
+                    gameWon = false;
+                }
+            }
+        }
+        return gameWon;
+    }
+
     // This function takes forever if the board is almost full of mines, but since we will only allow a few configurations,
     // none so full, this should not be a problem.
     private assignMines(): void {

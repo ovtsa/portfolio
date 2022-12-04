@@ -2,7 +2,12 @@
     <div class="minesweeper-game-ui-container">
         <div class="minesweeper-game-top-buttons-ribbon">
             <div class="minesweeper-counter"></div>
-            <div class="minesweeper-game-button"></div>
+            <div class="minesweeper-game-button" 
+                (mousedown)="gameButtonPressed()"
+                (mouseup)="gameButtonReleased()"
+                (mouseleave)="cancelGameButtonClick()">
+                <img [src]="gameButtonImageSrc" />
+            </div>
             <div class="minesweeper-counter"></div>
         </div>
         <table class="minesweeper-game-cell-grid" (mouseleave)="mouseUpOnCell(0, 0, true)">
@@ -10,7 +15,7 @@
                 <td *ngFor="let col of board.grid[y]; index as x">
                     <div class="minesweeper-game-cell" (mousedown)="mouseDownOnCell($event, x, y)" (contextmenu)="test()"
                             (mouseup)="mouseUpOnCell(x, y, false)">
-                        <img [src]="board.grid[y][x].getCellImage(gameOver)" (keypress)="test()">
+                        <img [src]="board.grid[y][x].getCellImage(gameOver, gameWon)" (keypress)="test()">
                     </div>
                 </td>
             </tr>

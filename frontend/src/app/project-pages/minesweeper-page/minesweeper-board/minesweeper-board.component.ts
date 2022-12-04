@@ -10,8 +10,12 @@ import { CellState } from 'src/app/project-logic/minesweeper/cell';
 export class MinesweeperBoardComponent implements OnInit {
   board: Board;
   gameOver: boolean;
+  gameWon: boolean;
   firstClick: boolean;
   lastMouseDownPosition: {x: number, y: number};
+  gameButtonImageSrc: string;
+  previousGameButtonImage: string;
+  pressingGameButton: boolean;
 
   constructor() { 
     this.reset();
@@ -21,10 +25,34 @@ export class MinesweeperBoardComponent implements OnInit {
   }
 
   reset(): void {
-    this.board = new Board(DefaultBoardSpecs.ExpertWidth, DefaultBoardSpecs.ExpertHeight, DefaultBoardSpecs.ExpertNumMines);
+    this.board = new Board(DefaultBoardSpecs.ExpertWidth, DefaultBoardSpecs.ExpertHeight, 2);
     this.gameOver = false;
+    this.gameWon = false;
     this.firstClick = true;
     this.lastMouseDownPosition = {x: -1, y: -1};
+    this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
+    this.previousGameButtonImage = "";
+    this.pressingGameButton = false;
+  }
+
+  gameButtonPressed() {
+    this.pressingGameButton = true;
+    this.previousGameButtonImage = this.gameButtonImageSrc;
+    this.gameButtonImageSrc = "assets/images/minesweeper/game-button-clicking.png";
+  }
+
+  gameButtonReleased() {
+    if (this.pressingGameButton) {
+      this.reset();
+    }
+  }
+
+  cancelGameButtonClick() {
+    if (this.pressingGameButton) {
+      this.pressingGameButton = false;
+      this.gameButtonImageSrc = this.previousGameButtonImage;
+      this.previousGameButtonImage = "";
+    }
   }
 
   mouseUpOnCell(x: number, y: number, skipAll?: boolean, skipMousePositionCheck?: boolean): void {
@@ -35,6 +63,7 @@ export class MinesweeperBoardComponent implements OnInit {
       console.log('mouseUpOnCell() skip all');
       if (this.lastMouseDownPosition.x >= 0 && this.lastMouseDownPosition.y >= 0)
         this.board.grid[this.lastMouseDownPosition.y][this.lastMouseDownPosition.x].clicking = false;
+      this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
       return;
     }
     // bounds checking that you aren't selecting outside the grid
@@ -44,6 +73,7 @@ export class MinesweeperBoardComponent implements OnInit {
       console.log('skip mouse position check false');
       if (this.lastMouseDownPosition.x >= 0 && this.lastMouseDownPosition.y >= 0) {
         this.board.grid[this.lastMouseDownPosition.y][this.lastMouseDownPosition.x].clicking = false;
+        this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
       }
       return;
     }
@@ -62,8 +92,10 @@ export class MinesweeperBoardComponent implements OnInit {
     if (this.board.grid[y][x].mine) {
       this.gameOver = true;
       this.board.grid[y][x].deathClick = true;
+      this.gameButtonImageSrc = "assets/images/minesweeper/game-button-dead.png";
     } else {
       this.board.grid[y][x].cellState = CellState.CLEAR;
+      this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
       if (this.board.grid[y][x].numAdjacentMines == 0) {
         this.mouseUpOnCell(x - 1, y - 1, false, true);
         this.mouseUpOnCell(x - 1, y, false, true);
@@ -73,6 +105,11 @@ export class MinesweeperBoardComponent implements OnInit {
         this.mouseUpOnCell(x + 1, y - 1, false, true);
         this.mouseUpOnCell(x + 1, y, false, true);
         this.mouseUpOnCell(x + 1, y + 1, false, true);
+      }
+      if (this.board.isGameWon()) { 
+        this.gameOver = true; 
+        this.gameWon = true;
+        this.gameButtonImageSrc = "assets/images/minesweeper/game-button-victory.png";
       }
     }
   }
@@ -105,6 +142,7 @@ export class MinesweeperBoardComponent implements OnInit {
     }
     if (x < 0 || x >= this.board.width || y < 0 || y >= this.board.height) return;
     if (this.board.grid[y][x].cellState != CellState.UNKNOWN) return;
+    this.gameButtonImageSrc = "assets/images/minesweeper/game-button-clicking.png";
 
     this.lastMouseDownPosition.x = x;
     this.lastMouseDownPosition.y = y;
