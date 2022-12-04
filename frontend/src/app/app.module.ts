@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { HttpDriver } from './shared/http-driver.service';
 import { NavbarButtonComponent } from './projects-navbar/navbar-button/navbar-button.component';
 import { BlogHomepageComponent } from './project-pages/blog-homepage/blog-homepage.component';
 import { ProjectsLandingPageComponent } from './project-pages/projects-landing-page/projects-landing-page.component';
@@ -48,7 +49,7 @@ import { MinesweeperBoardComponent } from './project-pages/minesweeper-page/mine
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, HttpDriver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

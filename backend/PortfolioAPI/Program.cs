@@ -39,6 +39,8 @@ builder.Services.AddHealthChecks()
 
 var app = builder.Build();
 
+app.UseCors(x => x.AllowAnyOrigin());
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

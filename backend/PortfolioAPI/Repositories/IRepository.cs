@@ -8,5 +8,7 @@ namespace PortfolioAPI.Repositories {
         Task CreateMinesweeperGameAsync(GameData gd);
         Task UpdateMinesweeperGameAsync(GameData gd);
         Task DeleteMinesweeperGameAsync(Guid id);
+        Task Initialize();
+        Task Clear();
     }
 }

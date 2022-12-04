@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { HttpDriver } from 'src/app/shared/http-driver.service';
 
 @Component({
   selector: 'app-contact-me',
@@ -7,18 +8,12 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 })
 export class ContactMeComponent implements OnInit {
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private httpDriver: HttpDriver) { }
 
   ngOnInit(): void {
   }
 
   onDownloadResumeButtonClicked() {
-    const path = '/assets/misc/dummy_resume.docx';
-    const link = this.renderer.createElement('a');
-    link.setAttribute('target', '_blank');
-    link.setAttribute('href', window.location.protocol + '//' + window.location.host + path);
-    link.setAttribute('download', `dummy_resume.docx`);
-    link.click();
-    link.remove();
+    this.httpDriver.getResume();
   }
 }

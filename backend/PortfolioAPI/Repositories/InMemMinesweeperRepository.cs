@@ -36,5 +36,13 @@ namespace PortfolioAPI.Repositories {
             games.RemoveAt(games.FindIndex(existingGame => existingGame.id == id));
             await Task.CompletedTask;
         }
+
+        public async Task Initialize() {
+            throw new NotImplementedException();
+        }
+
+        public async Task Clear() {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -18,6 +18,14 @@ namespace PortfolioAPI.DbTools {
             resumeCollection = mongoDatabase.GetCollection<Resume>(resumeCollectionName);
         }
 
+        public async Task ClearDatabase(IMongoDatabase mongoDatabase) {
+            mongoDatabase.DropCollection(gameDataCollectionName);
+            mongoDatabase.DropCollection(resumeCollectionName);
+            gameDataCollection = mongoDatabase.GetCollection<GameData>(gameDataCollectionName);
+            resumeCollection = mongoDatabase.GetCollection<Resume>(resumeCollectionName);
+            await Task.CompletedTask;
+        }
+
         public async Task InsertTestData() {
             Random rnd = new Random();
 
@@ -50,10 +58,8 @@ namespace PortfolioAPI.DbTools {
             }
 
             // convert resume to binary data in the resume object 
-            FileStream stream = File.OpenRead("DatabaseTools/resume.docx");
-            byte[] fileBinary = new byte[stream.Length];
-            stream.Read(fileBinary, 0, fileBinary.Length);
-            stream.Close();
+
+            byte[] fileBinary = File.ReadAllBytes("DatabaseTools/resume.docx");
 
             Resume resume = new Resume {
                 id = Guid.NewGuid(),

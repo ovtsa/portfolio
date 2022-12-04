@@ -4,32 +4,38 @@ using MongoDB.Driver;
 using PortfolioAPI.Dtos;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Globalization;
 
 // TODO: Separate different controllers' functions and collections into separate classes.
 // this should not be a monolith class for all mongodb functions
 namespace PortfolioAPI.Repositories {
     public class MongoDbRepository : IRepository {
+        private IMongoDatabase database;
         private const string databaseName = "Portfolio_API_DB";
         private const string gameDataCollectionName = "gameDataCollection";
         private const string resumeCollectionName = "resumeCollection";
         private readonly IMongoCollection<GameData> gameDataCollection;
         private readonly IMongoCollection<Resume> resumeCollection;
+        private readonly InitDb initDb;
         private readonly FilterDefinitionBuilder<GameData> filterBuilder = Builders<GameData>.Filter;
         private readonly SortDefinitionBuilder<GameData> sortBuilder = Builders<GameData>.Sort;
 
         public MongoDbRepository(IMongoClient mongoClient) {
-            IMongoDatabase database = mongoClient.GetDatabase(databaseName);
+            database = mongoClient.GetDatabase(databaseName);
+            initDb = new InitDb(database);
             gameDataCollection = database.GetCollection<GameData>(gameDataCollectionName);
             resumeCollection = database.GetCollection<Resume>(resumeCollectionName);
 
             // This only should be run in test environment, not prod
-            InsertTestData(database);
+            //InsertTestData(database);
         }
 
+        /*
         private void InsertTestData(IMongoDatabase database) {
             InitDb initDb = new InitDb(database);
             initDb.InsertTestData();
         }
+        */
 
         public async Task<Resume> GetResumeAsync() {
             var filter = Builders<Resume>.Filter.Eq(resume => resume.name, "Nathan Jobe");
@@ -61,6 +67,15 @@ namespace PortfolioAPI.Repositories {
         public async Task DeleteMinesweeperGameAsync(Guid id) {
             var filter = filterBuilder.Eq(gameData => gameData.id, id);
             await gameDataCollection.DeleteOneAsync(filter);
+        }
+
+        public async Task Initialize() {
+            await this.initDb.ClearDatabase(database);
+            await this.initDb.InsertTestData();
+        }
+
+        public async Task Clear() {
+            await this.initDb.ClearDatabase(database);
         }
     }
 }
