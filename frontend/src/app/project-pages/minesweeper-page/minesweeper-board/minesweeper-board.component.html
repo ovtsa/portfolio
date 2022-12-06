@@ -1,14 +1,14 @@
 <div class="minesweeper-game-container" oncontextmenu="return false">
     <div class="minesweeper-game-ui-container">
         <div class="minesweeper-game-top-buttons-ribbon">
-            <div class="minesweeper-counter"></div>
+            <app-minesweeper-ui-num-field [value]="uiTimer"></app-minesweeper-ui-num-field>
             <div class="minesweeper-game-button" 
                 (mousedown)="gameButtonPressed()"
                 (mouseup)="gameButtonReleased()"
                 (mouseleave)="cancelGameButtonClick()">
                 <img [src]="gameButtonImageSrc" />
             </div>
-            <div class="minesweeper-counter"></div>
+            <app-minesweeper-ui-num-field [value]="uiMineCounter"></app-minesweeper-ui-num-field>
         </div>
         <table class="minesweeper-game-cell-grid" (mouseleave)="mouseUpOnCell(0, 0, true)">
             <tr *ngFor="let row of board.grid; index as y">

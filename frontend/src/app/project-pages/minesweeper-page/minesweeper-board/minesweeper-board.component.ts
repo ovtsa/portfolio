@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren } from '@angular/core';
 import { Board, DefaultBoardSpecs } from 'src/app/project-logic/minesweeper/board';
 import { CellState } from 'src/app/project-logic/minesweeper/cell';
 
@@ -16,16 +16,23 @@ export class MinesweeperBoardComponent implements OnInit {
   gameButtonImageSrc: string;
   previousGameButtonImage: string;
   pressingGameButton: boolean;
-
+  uiTimer: number;
+  actualTimer: number;
+  uiMineCounter: number;
+  actualMineCounter: number;
+  intervalId: number;
+  
   constructor() { 
     this.reset();
   }
 
   ngOnInit(): void {
-  }
+    this.reset();
+   }
 
   reset(): void {
-    this.board = new Board(DefaultBoardSpecs.ExpertWidth, DefaultBoardSpecs.ExpertHeight, 2);
+    this.stopTimer();
+    this.board = new Board(DefaultBoardSpecs.ExpertWidth, DefaultBoardSpecs.ExpertHeight, DefaultBoardSpecs.ExpertNumMines);
     this.gameOver = false;
     this.gameWon = false;
     this.firstClick = true;
@@ -33,6 +40,25 @@ export class MinesweeperBoardComponent implements OnInit {
     this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
     this.previousGameButtonImage = "";
     this.pressingGameButton = false;
+    this.uiTimer = 0;
+    this.actualTimer = 0;
+    this.uiMineCounter = 0;
+    this.actualMineCounter = 0;
+    this.intervalId = -1;
+  }
+
+  setTimer() {
+    // somehow this method gets called a billion times ???
+    this.intervalId = window.setInterval(() => {
+      this.actualTimer++;
+      if (this.actualTimer < 1000) this.uiTimer++;
+    }, 1000);
+    console.log("MinesweeperBoardComponent.setTimer()  intervalId: " + this.intervalId);
+  }
+
+  stopTimer() {
+    console.log("MinesweeperBoardComponent.stopTimer() intervalId: " + this.intervalId);
+    window.clearInterval(this.intervalId);
   }
 
   gameButtonPressed() {
@@ -60,7 +86,6 @@ export class MinesweeperBoardComponent implements OnInit {
     if (this.gameOver) return;
     // if skipping, it means you dragged out of bounds. Undo the cell pressing animation and reset the last cell pressed data
     if (skipAll) {
-      console.log('mouseUpOnCell() skip all');
       if (this.lastMouseDownPosition.x >= 0 && this.lastMouseDownPosition.y >= 0)
         this.board.grid[this.lastMouseDownPosition.y][this.lastMouseDownPosition.x].clicking = false;
       this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
@@ -70,7 +95,6 @@ export class MinesweeperBoardComponent implements OnInit {
     if (x < 0 || x >= this.board.width || y < 0 || y >= this.board.height) return;
     // ensuring this is the cell that was originally pressed 
     if (!skipMousePositionCheck && (this.lastMouseDownPosition.x != x || this.lastMouseDownPosition.y != y)) {
-      console.log('skip mouse position check false');
       if (this.lastMouseDownPosition.x >= 0 && this.lastMouseDownPosition.y >= 0) {
         this.board.grid[this.lastMouseDownPosition.y][this.lastMouseDownPosition.x].clicking = false;
         this.gameButtonImageSrc = "assets/images/minesweeper/game-button.png";
@@ -82,14 +106,15 @@ export class MinesweeperBoardComponent implements OnInit {
 
     if (this.firstClick && this.board.grid[y][x].mine) {
       this.board.moveMineFromCell(x, y);
-      console.log('first click had to move mine from (' + x + ', ' + y + ')');
     }
 
-    console.log('grid square (' + x + ', ' + y + ') clicked');
+    if (this.firstClick) this.firstClickFunc(x, y);
     this.firstClick = false;
+
     this.board.grid[this.lastMouseDownPosition.y][this.lastMouseDownPosition.x].clicking = false;
 
     if (this.board.grid[y][x].mine) {
+      this.stopTimer();
       this.gameOver = true;
       this.board.grid[y][x].deathClick = true;
       this.gameButtonImageSrc = "assets/images/minesweeper/game-button-dead.png";
@@ -107,6 +132,7 @@ export class MinesweeperBoardComponent implements OnInit {
         this.mouseUpOnCell(x + 1, y + 1, false, true);
       }
       if (this.board.isGameWon()) { 
+        this.stopTimer();
         this.gameOver = true; 
         this.gameWon = true;
         this.gameButtonImageSrc = "assets/images/minesweeper/game-button-victory.png";
@@ -114,13 +140,8 @@ export class MinesweeperBoardComponent implements OnInit {
     }
   }
 
-  public test() {
-    console.log('hi');
-  }
-
   flagCell(x: number, y: number): void {
-    console.log('flagCell()');
-    if (this.gameOver) return;
+    if (this.gameOver || this.firstClick) return;
     if (x < 0 || x >= this.board.width || y < 0 || y >= this.board.height) return;
     if (this.board.grid[y][x].cellState == CellState.CLEAR) return;
 
@@ -128,8 +149,12 @@ export class MinesweeperBoardComponent implements OnInit {
 
     if (cell.cellState == CellState.UNKNOWN) {
       cell.cellState = CellState.FLAG;
+      this.actualMineCounter--;
+      if (this.actualMineCounter < 1000 && this.actualMineCounter >= 0) this.uiMineCounter = this.actualMineCounter;
     } else {
       cell.cellState = CellState.UNKNOWN;
+      this.actualMineCounter++;
+      if (this.actualMineCounter < 1000 && this.actualMineCounter >= 0) this.uiMineCounter = this.actualMineCounter;
     }
   }
 
@@ -147,7 +172,11 @@ export class MinesweeperBoardComponent implements OnInit {
     this.lastMouseDownPosition.x = x;
     this.lastMouseDownPosition.y = y;
     this.board.grid[y][x].clicking = true;
+  }
 
-    console.log('mouseDownOnCell() on (' + x + ', ' + y + ')')
+  private firstClickFunc(x: number, y: number): void {
+    this.uiMineCounter = this.board.numMines;
+    this.actualMineCounter = this.board.numMines;
+    this.setTimer();
   }
 }
